@@ -1,0 +1,1 @@
+chrome.runtime.onInstalled.addListener(async()=>{console.log("Extension installed");const e=chrome.runtime.getManifest();if(e.content_scripts)for(const t of e.content_scripts){const s=await chrome.tabs.query({url:t.matches});for(const n of s)console.log(`Injecting content script '${t.js}' into tab '${n.title}'`),chrome.scripting.executeScript({target:{tabId:n.id},files:t.js})}});

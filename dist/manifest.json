@@ -1,0 +1,62 @@
+{
+  "name": "Chess.com Insights",
+  "description": "Shows Win/Lose/Draw and average accuracy for players on chess.com",
+  "author": "thieleju",
+  "manifest_version": 3,
+  "version": "2.2.1",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "webRequest",
+    "storage"
+  ],
+  "action": {
+    "default_locale": "en",
+    "default_title": "Chess.com Insights",
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/insights.ts-loader-cfc5d93b.js"
+      ],
+      "matches": [
+        "https://*.chess.com/play/online*",
+        "https://*.chess.com/play/online/*",
+        "https://*.chess.com/game/daily/*",
+        "https://*.chess.com/game/live/*",
+        "https://*.chess.com/live/game/*",
+        "https://*.chess.com/analysis/game/live/*"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "https://*.chess.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://*.chess.com/*",
+        "https://*.chess.com/*",
+        "https://*.chess.com/*",
+        "https://*.chess.com/*",
+        "https://*.chess.com/*",
+        "https://*.chess.com/*"
+      ],
+      "resources": [
+        "assets/settings-3e1a4656.js",
+        "assets/insights.ts-e8d7fa15.js"
+      ],
+      "use_dynamic_url": true
+    }
+  ]
+}
